@@ -1,0 +1,118 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+//KOTLIN ANNOTATIONS PROCESSOR
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'androidx.navigation.safeargs'
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "edu.pokemon.iut.tuttidex"
+        minSdkVersion 19
+        targetSdkVersion 29
+        multiDexEnabled true
+
+        buildToolsVersion "30.0.0"
+
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        buildConfigField 'int', 'VERSION_DB', '1'
+        buildConfigField "String", "URL", "\"https://pokeapi.co/api/v2/\""
+        buildConfigField "String", "URL_IMAGE", "\"https://raw.githubusercontent.com/PokeAPI/sprites/master/\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$version_kotlin"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$version_kotlin"
+    implementation "org.koin:koin-android:2.0.1"
+
+    // AndroidX (based on koin-android)
+
+    // Koin AndroidX ViewModel feature
+    implementation "org.koin:koin-androidx-viewmodel:2.0.1"
+
+    // Koin AndroidX Experimental features
+    implementation "org.koin:koin-androidx-ext:2.0.1"
+
+    implementation "androidx.core:core-ktx:$version_core"
+
+    implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
+
+    implementation ("androidx.appcompat:appcompat:$version_appcompat")
+    implementation "com.google.android.material:material:$version_material"
+    implementation ('com.google.firebase:firebase-inappmessaging-display:18.0.2')
+    implementation ('com.google.firebase:firebase-core:17.0.1')
+    api 'com.google.guava:guava:28.0-android'
+
+    // Room and Lifecycle dependencies
+    implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$version_lifecycle_extensions"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_coroutine"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_coroutine"
+
+    // Retrofit for networking
+    implementation "com.squareup.retrofit2:retrofit:2.6.0"
+    implementation "com.squareup.retrofit2:converter-moshi:2.6.0"
+
+    // Moshi for parsing the JSON format
+    implementation 'se.ansman.kotshi:api:2.0.1'
+    kapt 'se.ansman.kotshi:compiler:2.0.1'
+
+    implementation "androidx.room:room-runtime:$version_room"
+    kapt "androidx.room:room-compiler:$version_room"
+
+
+    //Navigation
+    implementation "android.arch.navigation:navigation-fragment-ktx:$version_navigation"
+    implementation "android.arch.navigation:navigation-ui-ktx:$version_navigation"
+
+    //Utils
+    implementation("com.github.bumptech.glide:glide:$version_glide") {
+        exclude group: "com.android.support"
+    }
+    implementation "com.github.florent37:shapeofview:$version_shapeofview"
+    implementation "com.jakewharton.timber:timber:$version_timber"
+
+    //Multidex
+    implementation 'com.android.support:multidex:1.0.3'
+
+    //Test
+    testImplementation "junit:junit:4.12"
+    androidTestImplementation "androidx.test:runner:1.2.0"
+    androidTestImplementation 'com.jraska.livedata:testing-ktx:1.1.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.arch.core:core-testing:2.0.1'
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.2.0"
+}

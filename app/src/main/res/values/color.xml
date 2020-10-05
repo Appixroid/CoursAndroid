@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">#b71c1c</color>
+    <color name="color_primary_variant">#f05545</color>
+    <color name="color_secondary">#004c8c</color>
+    <color name="color_secondary_variant">#58a5f0</color>
+
+    <color name="color_background">#ffffff</color>
+    <color name="color_surface">#ffffff</color>
+    <color name="color_error">#ffa500</color>
+
+    <color name="color_on_primary">#ffffff</color>
+    <color name="color_on_secondary">#ffffff</color>
+    <color name="color_on_background">#000000</color>
+    <color name="color_on_surface">#000000</color>
+    <color name="color_on_error">#ffffff</color>
+
+    <color name="steel">#6f7c7c</color>
+    <color name="fire">#ea6907</color>
+    <color name="rock">#b8a038</color>
+    <color name="water">#2ccad6</color>
+    <color name="grass">#20b52c</color>
+    <color name="ground">#9e7934</color>
+    <color name="dark">#2d2920</color>
+    <color name="dragon">#7247a3</color>
+    <color name="ghost">#421872</color>
+    <color name="fairy">#e862ea</color>
+    <color name="poison">#910ddd</color>
+    <color name="bug">#52d864</color>
+    <color name="psychic">#f90eca</color>
+    <color name="electric">#efec13</color>
+    <color name="flying">#b5a6ed</color>
+    <color name="fight">#bc1d0f</color>
+    <color name="ice">#85d1bf</color>
+    <color name="normal">#838e8a</color>
+    <color name="defaultType">#838e8a</color>
+
+</resources>

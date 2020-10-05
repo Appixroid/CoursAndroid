@@ -1,0 +1,75 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">TuttiDex</string>
+    <string name="pokemon_detail">Pokemon detail</string>
+    <string name="exit_message">Exit ?</string>
+    <string name="content_description">Image of the pokemon</string>
+    <string name="content_description_capture">Image of a Pokeball to capture a pokemon</string>
+    <string name="base_exp">BASE EXP</string>
+    <string name="ht">HT</string>
+    <string name="wt">WT</string>
+    <string name="types">TYPES</string>
+    <string name="number">No. %d</string>
+    <string name="exp" tools:ignore="PluralsCandidate">%d exp</string>
+    <string name="height">%.2f m</string>
+    <string name="weight">%.2f kg</string>
+    <string name="ht_hint">Height in dm</string>
+    <string name="wt_hint">Weight in kg</string>
+    <string name="action_night">night moon</string>
+
+    <string name="about_text">
+        &lt;b>Terms and Conditions (\"Terms\")&lt;/b>
+        &lt;p>Last updated: June 12, 2019&lt;/p>
+        &lt;p>Please read these Terms and Conditions (\"Terms\", \"Terms and Conditions\") carefully before using the TuttiDex application (the \"App\") developed by TuttiFruty (\"us\", \"we\", or \"our\").&lt;/p>
+        &lt;p>Your access to and use of the app is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the App.&lt;/p>
+        &lt;p>By accessing or using the App you agree to be bound by these Terms. If you disagree with any part of the terms then you may not use the App.&lt;/p>
+        &lt;p>The App is an unofficial, free fan made app and is NOT affiliated, endorsed or supported by Nintendo, GAME FREAK or The Pokemon company in any way.&lt;/p>
+        &lt;p>The App is an educational app made to allow students to learn about the Android Framework and put in practice their knowledge, it\'s only goal it\'s to show the final result to students.&lt;/p>
+        &lt;p>Some images used in The App are copyrighted and are supported under fair use.&lt;/p>
+        &lt;p>Pokemon and Pokemon character names are trademarks of Nintendo.&lt;/p>
+        &lt;p>No copyright infringement intended.&lt;/p>
+        &lt;p>Pokemon © 2002-20199 Pokemon. © 1995-2019 Nintendo/Creatures Inc./GAME FREAK inc.&lt;/p>
+
+        &lt;b>Personal information&lt;/b>
+        &lt;p>None of your personal information are collected in any kind of way.&lt;/p>
+
+        &lt;b>Governing Law&lt;/b>
+        &lt;p>These Terms shall be governed and construed in accordance with the laws of France, without regard to its conflict of law provisions.&lt;/p>
+        &lt;p>Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect. These Terms constitute the entire agreement between us regarding our App, and supersede and replace any prior agreements we might have between us regarding the App.&lt;/p>
+
+        &lt;b>Changes&lt;/b>
+        &lt;p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will try to provide at least 30 days notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.&lt;/p>
+        &lt;p>By continuing to access or use our App after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the App.&lt;/p>
+
+        &lt;b>Libraries used&lt;/b>
+        &lt;p>
+            &lt;ul>
+                &lt;li> Timber (https://github.com/JakeWharton/timber) &lt;/li>
+                &lt;li> ShapeOfView (https://github.com/florent37/ShapeOfView) &lt;/li>
+                &lt;li> Retrofit (https://square.github.io/retrofit) &lt;/li>
+                &lt;li> Moshi (https://github.com/square/moshi) &lt;/li>
+            &lt;/ul>
+        &lt;/p>
+
+        &lt;b>License&lt;/b>
+        &lt;p> Source code available on Github (https://github.com/TuttiFruty/tuttidex) under the GNU General Public License v3.0 &lt;/p>
+
+        &lt;b>Contact Us&lt;/b>
+        &lt;p>If you have any questions about these Terms, please contact us.&lt;/p>
+    </string>
+
+    <string name="about">About</string>
+    <string name="share">Share pokemon</string>
+
+    <string name="create_pokemon">Create new Pokemon</string>
+
+    <string name="pokemon_logo_transition" translatable="false">Pokemon Logo Transition</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="search_hint">Search Pokemon</string>
+    <string name="filter_captured">Filter captured</string>
+    <string name="add_photo">Add photo</string>
+    <string name="tuttidex_logo">Tuttidex logo</string>
+    <string name="preview_pokemon">Pokemon preview</string>
+    <string name="type_pokemon_color">Type pokemon color</string>
+
+</resources>
