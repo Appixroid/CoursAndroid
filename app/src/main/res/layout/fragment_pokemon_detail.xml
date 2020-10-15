@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="pokemonDetailViewModel"
+            type="edu.pokemon.iut.tuttidex.ui.pokemondetail.PokemonDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <!--TODO 5) Afficher le numero du pokemon
+             Servez vous de pokemonDetailViewModel pour recuperer les données-->
+        <TextView
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/number, pokemonDetailViewModel.number)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--TODO 6) Afficher le nom du pokemon -->
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{pokemonDetailViewModel.name}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--TODO 7) Afficher un "label" pour indiquer que la donnée est le type du pokemon -->
+        <TextView
+            android:id="@+id/type_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/type"
+            app:layout_constraintTop_toTopOf="@id/name" />
+        <!--TODO 8) Afficher le premier type du pokemon -->
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{pokemonDetailViewModel.types.get(0)}"
+            app:layout_constraintStart_toEndOf="@id/type_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/name" />
+
+        <!--TODO 9) Afficher un "label" pour indiquer que la donnée est l'exp de base du pokemon -->
+        <TextView
+            android:id="@+id/exp_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exp Base : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/exp"
+            app:layout_constraintTop_toTopOf="@id/type_label" />
+        <!--TODO 10) Afficher l'exp de base du pokemon -->
+        <TextView
+            android:id="@+id/exp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{pokemonDetailViewModel.baseExp}"
+            app:layout_constraintStart_toEndOf="@id/exp_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/type" />
+
+        <!--TODO 11) Afficher un "label" pour indiquer que la donnée est la taille du pokemon -->
+        <TextView
+            android:id="@+id/size_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Size : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/size"
+            app:layout_constraintTop_toTopOf="@id/type_label" />
+        <!--TODO 12) Afficher la taille du pokemon -->
+        <TextView
+            android:id="@+id/size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{pokemonDetailViewModel.height.intValue()}"
+            app:layout_constraintStart_toEndOf="@id/size_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/type" />
+
+        <!--TODO 13) Afficher un "label" pour indiquer que la donnée est le poids du pokemon -->
+        <TextView
+            android:id="@+id/weight_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weight : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/weight"
+            app:layout_constraintTop_toTopOf="@id/size_label" />
+        <!--TODO 14) Afficher le poids du pokemon -->
+        <TextView
+            android:id="@+id/weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{pokemonDetailViewModel.weight.intValue()}"
+            app:layout_constraintStart_toEndOf="@id/weight_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/size" />
+
+        <!--TODO 15) Afficher l'image du pokemon -->
+        <ImageView
+            android:id="@+id/detail_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            imageUrl="@{pokemonDetailViewModel.image}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

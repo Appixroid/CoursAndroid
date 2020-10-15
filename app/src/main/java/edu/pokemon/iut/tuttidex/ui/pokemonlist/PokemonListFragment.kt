@@ -1,31 +1,25 @@
 package edu.pokemon.iut.tuttidex.ui.pokemonlist
 
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.*
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
 import edu.pokemon.iut.tuttidex.R
 import edu.pokemon.iut.tuttidex.databinding.FragmentPokemonListBinding
 import edu.pokemon.iut.tuttidex.ui.model.Pokemon
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import androidx.recyclerview.widget.LinearLayoutManager
-
-
 
 /**
  * A simple [Fragment] subclass.
  *
  */
 class PokemonListFragment : Fragment() {
-    //TODO 2 Declare une var(iable) privee qui sera init(ialiser) plus tard(late) du type FragmentPokemonListBinding
-    private lateinit var pokeListBinding : FragmentPokemonListBinding
-
+    private lateinit var binding: FragmentPokemonListBinding
     val viewModel: PokemonListViewModel by viewModel()
 
     private var maxId: Int = 0
@@ -34,39 +28,19 @@ class PokemonListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //TODO 3 initialise la variable cree avec :
-        // le LayoutInflater en parametre de onCreateView
-        // le R.layout du fichier XML
-        // le ViewGroup en parametre de onCreateView
-        // on ne l'attache pas au parent
-        this.pokeListBinding = FragmentPokemonListBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_pokemon_list,
+            container,
+            false
+        )
 
-        //TODO 4 instancie un PokemonsAdapter en lui passant la val(eur) viewModel et stocke l'instance dans une autre val(eur)
-        val pokeAdapter = PokemonsAdapter(viewModel)
-
-        //TODO 5 utilise la variable de type FragmentPokemonListBinding pour acceder à ta RecyclerView
-        // initialise son attribut adapter
-        val recyclerView = pokeListBinding.root.findViewById<RecyclerView>(R.id.pokelist)
-        recyclerView.adapter = pokeAdapter
-
-        //TODO 6 utilise la variable de type FragmentPokemonListBinding pour acceder à ta RecyclerView
-        // initialise son attribut layoutManager
-        recyclerView.layoutManager = LinearLayoutManager(this.context)
-
-        val currentOrientation = resources.configuration.orientation
-        if(currentOrientation == Configuration.ORIENTATION_LANDSCAPE)
-        {
-            recyclerView.layoutManager = GridLayoutManager(this.context, 3)
-        }
-        else
-        {
-            recyclerView.layoutManager = LinearLayoutManager(this.context)
-        }
-
+        val adapter = PokemonsAdapter(viewModel)
+        binding.rvPokemonList.adapter = adapter
+        binding.rvPokemonList.layoutManager = LinearLayoutManager(context)
         viewModel.pokemons.observe(viewLifecycleOwner, Observer<List<Pokemon>> { pokemons ->
             pokemons?.apply {
-                //TODO 7 utilise la valeur de type PokemonsAdapter pour envoyer la liste des pokemons à la RecyclerView
-                pokeAdapter.submitList(pokemons)
+                adapter.submitList(pokemons)
             }
         })
 
@@ -75,15 +49,28 @@ class PokemonListFragment : Fragment() {
         })
 
         setHasOptionsMenu(true)
-        // TODO 8 renvoie l'attribut root de ta variable de type FragmentPokemonListBinding à la place de null
-        // (même si il y a un message d'erreur le .root existe est devrais fonctionner)
-        return pokeListBinding.root
+        // Inflate the layout for this fragment
+        return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if (viewModel.lastPokemonIdViewed in 1 until maxId) {
+            binding.rvPokemonList.scrollToPosition(viewModel.lastPokemonIdViewed)
+        }
+
+        if(viewModel.lastSearch.isNotBlank()){
+            viewModel.search(viewModel.lastSearch)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.overflow_menu, menu)
+
         super.onCreateOptionsMenu(menu, inflater)
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val navController = view?.findNavController()

@@ -6,10 +6,12 @@
              android:layout_height="match_parent"
              tools:context=".ui.pokemonlist.PokemonListFragment">
 
-    <!-- TODO 1 Ajout d'une RecyclerView pour afficher la liste des pokemons -->
-
     <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_pokemon_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:id="@+id/pokelist"/>
+            android:layout_height="match_parent"
+            tools:listitem="@layout/component_pokemon_line"
+    />
+
 </FrameLayout>
 </layout>

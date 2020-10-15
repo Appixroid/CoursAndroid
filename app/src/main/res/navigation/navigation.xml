@@ -9,11 +9,29 @@
               android:name="edu.pokemon.iut.tuttidex.ui.pokemonlist.PokemonListFragment"
               android:label="@string/app_name"
               tools:layout="@layout/fragment_pokemon_list">
+
+        <!-- TODO 2) Ajouter une "action" au fragment et definir une "destination"
+                Vous pouvez soit écrire le code, soit passer par l'onglet design pour ajouter l'action et la configurer -->
+        <action
+            android:id="@+id/pokemonDetailFragment_action"
+            app:destination="@id/pokemonDetailFragment" />
+    </fragment>
+
+    <!-- TODO 1) Ajouter le fragment PokemonDetailFragment, le fragment attend un "pokemonId" de type "integer" en "argument"
+             La balise "layout" dans le namespace "tools" permet de previsualiser l'ecran sur l'onglet design
+             Vous pouvez soit écrire le code, soit passer par l'onglet design pour ajouter le fragment et le configurer -->
+
+    <fragment android:id="@+id/pokemonDetailFragment"
+              android:name="edu.pokemon.iut.tuttidex.ui.pokemondetail.PokemonDetailFragment"
+              android:label="@string/pokemon_detail"
+              tools:layout="@layout/fragment_pokemon_detail">
+
+        <argument android:name="pokemonId"
+                  app:argType="integer"/>
     </fragment>
 
     <fragment android:id="@+id/aboutFragment"
               android:name="edu.pokemon.iut.tuttidex.AboutFragment"
               android:label="@string/about"
               tools:layout="@layout/fragment_about"/>
-
 </navigation>
