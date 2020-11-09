@@ -3,6 +3,10 @@ package edu.pokemon.iut.tuttidex.ui.pokemonlist
 
 import android.os.Bundle
 import android.view.*
+import android.widget.CheckBox
+import android.widget.CompoundButton
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -13,6 +17,7 @@ import edu.pokemon.iut.tuttidex.R
 import edu.pokemon.iut.tuttidex.databinding.FragmentPokemonListBinding
 import edu.pokemon.iut.tuttidex.ui.model.Pokemon
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 /**
  * A simple [Fragment] subclass.
@@ -49,6 +54,7 @@ class PokemonListFragment : Fragment() {
         })
 
         //TODO 5) Configurer le Fragment pour dire qu'il possedra des OptionsMenu
+        setHasOptionsMenu(true)
 
         // Inflate the layout for this fragment
         return binding.root
@@ -96,6 +102,16 @@ class PokemonListFragment : Fragment() {
         // On force la valeur de filterView.isChecked avec la valeur filterCaptured de "it" pour s'assurer d'avoir le dernier état connue
         // On fait cela pour gérer la changement d'orientation (tester de basculer le telephone et regarder ce qu'il ce passe avant de coder)
         // On peut également imposer de fermer la recherche (closeSearch) si le filtre par capturé est cocher.
+        val capturedCheckBox = menu.findItem(R.id.filterByCaptured).actionView as CheckBox
+        capturedCheckBox.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener{
+            override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
+                viewModel.pokemonFilter.postValue(PokemonListViewModel.PokemonFilter("", isChecked))
+            }
+        })
+
+        viewModel.pokemonFilter.observe(viewLifecycleOwner, Observer {
+            capturedCheckBox.isChecked = it.filterCaptured
+        })
     }
 
     private fun initSearch(menu: Menu) {
@@ -111,6 +127,25 @@ class PokemonListFragment : Fragment() {
         // Retourner false dans les deux méthodes pour indiquer à Android que nous ne souhaitons pas appeler d'autre Listener attacher à notre actionView
         //TODO 15 Bonus) Récuperer la value de pokemonFilter dans le viewModel
         // Verifier si elle n'est pas vide et dans ce cas là ouvrer la barre de recherche (expandActionView) et setter la requete (un boolean vous est demandé 'submit')
+        val menuItem = menu.findItem(R.id.action_search)
+        val searchView = menuItem.actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                viewModel.search(newText)
+                return false
+            }
+        })
+
+        if(viewModel.pokemonFilter.value!!.searchQuery.isNotEmpty())
+        {
+            menuItem.expandActionView()
+            searchView.setQuery(viewModel.pokemonFilter.value!!.searchQuery, true)
+        }
     }
 
     private fun closeSearch(menu: Menu) {
@@ -118,6 +153,15 @@ class PokemonListFragment : Fragment() {
         // Vous aller comme dans le 13) et 14) recuperer l'actionView de type SearchView
         // Cette fois-ci on va regarder sur l'item si l'ActionView est deplier (expanded)
         // Si c'est le cas on veut la fermer (collapse) et lui passer une requete vide que nous n'allons pas envoyer
+
+        val menuItem = menu.findItem(R.id.action_search)
+        val searchView = menuItem.actionView as SearchView
+
+        if(menuItem.isActionViewExpanded)
+        {
+            menuItem.collapseActionView()
+            searchView.setQuery("", false)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

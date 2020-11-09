@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- TODO 3) Crée une icone pour l'item filterByCaptured et rajouter la lui-->
+    <!-- TODO 4) Indiquer l'actionViewClass de l'item (CheckBox) attention au package-->
+    <item android:id="@+id/filterByCaptured"
+        android:checkable="true"
+        android:title="@string/filter_captured"
+        app:showAsAction="ifRoom"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        app:actionViewClass="android.widget.CheckBox"/>
+
     <!-- TODO 1) Crée une icone pour l'item action_search et rajouter la lui-->
     <!-- TODO 2) Indiquer l'actionViewClass de l'item (SearchView) attention au package-->
     <item android:id="@+id/action_search"
           android:title="@string/search_hint"
-          app:showAsAction="ifRoom|collapseActionView" />
+          app:showAsAction="ifRoom|collapseActionView"
+          android:icon="@android:drawable/ic_menu_search"
+          app:actionViewClass="android.widget.SearchView" />
 
     <item
             android:id="@+id/aboutFragment"
             android:title="@string/about" />
-
-    <!-- TODO 3) Crée une icone pour l'item filterByCaptured et rajouter la lui-->
-    <!-- TODO 4) Indiquer l'actionViewClass de l'item (CheckBox) attention au package-->
-    <item android:id="@+id/filterByCaptured"
-          android:checkable="true"
-          android:title="@string/filter_captured"
-          app:showAsAction="ifRoom"
-    />
 </menu>
